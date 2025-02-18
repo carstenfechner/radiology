@@ -1,5 +1,12 @@
 // src/pages/Library.tsx
+import { useUser } from '@clerk/clerk-react'
+
 export default function Library() {
-    return <div>Radiology</div>
+  const { isSignedIn, user } = useUser()
+
+  if (!isSignedIn) {
+    return <div>Access Denied</div> // or redirect
   }
-  
+
+  return <div>Radiology</div>
+}
